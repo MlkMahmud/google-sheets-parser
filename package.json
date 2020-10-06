@@ -4,9 +4,11 @@
   "description": "A Google Sheets parser",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node src/app.ts",
     "lint:src": "eslint src --fix --ext .ts -c .eslintrc.json",
     "lint:types": "tsc --noEmit",
-    "lint": "npm-run-all lint:src lint:types"
+    "lint": "npm-run-all lint:src lint:types",
+    "prettify": "prettier -w ."
   },
   "repository": {
     "type": "git",
@@ -25,11 +27,11 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts}": [
+    "**/*.{ts}": [
       "npm run lint"
     ],
     "**/*.{md,yml,json,babelrc,eslintrc}": [
-      "prettier --write"
+      "npm run prettify"
     ]
   },
   "devDependencies": {
@@ -48,6 +50,7 @@
     "typescript": "^4.0.3"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "helmet": "^4.1.1"
   }
 }

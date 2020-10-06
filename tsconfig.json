@@ -16,12 +16,9 @@
     "compilerOptions": {
       "module": "commonjs",
       "sourceMap": true
-    },
+    }
   },
 
-  "include": [
-    "@types",
-    "src/**/*.ts"
-  ],
+  "include": ["@types", "src/**/*.ts"],
   "exclude": ["dist", "node_modules"]
 }
