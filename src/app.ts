@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 import helmet from 'helmet';
 import router from './routes';
 
@@ -8,7 +9,9 @@ interface ApiError extends Error {
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(helmet());
+
 app.use(router);
 // eslint-disable-next-line no-unused-vars
 app.use((err: ApiError, _req: Request, res: Response, _next: NextFunction) => {
