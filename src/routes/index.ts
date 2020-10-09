@@ -1,14 +1,13 @@
 import Router from 'express';
-import spreadsheetController from '../controllers';
+import controller from '../controllers';
 
 const router = Router();
-const { getSpreadsheetData, parseSpreadsheetData } = spreadsheetController;
+const { getSpreadsheetData } = controller;
 
-router.post('/', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
-    const { exclude, link } = req.body;
-    const spreadsheetData = await getSpreadsheetData(link, exclude);
-    const data = parseSpreadsheetData(spreadsheetData);
+    const { url, name } = req.query;
+    const data = await getSpreadsheetData(String(url), String(name));
     res
       .status(200)
       .json({
