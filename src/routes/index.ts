@@ -6,8 +6,9 @@ const { getSpreadsheetData } = controller;
 
 router.get('/', async (req, res, next) => {
   try {
-    const { url, name } = req.query;
-    const data = await getSpreadsheetData(String(url), String(name));
+    const url = req.query.url as string;
+    const name = req.query.url as string;
+    const data = await getSpreadsheetData(url, name);
     res
       .status(200)
       .json({
